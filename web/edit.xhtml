@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">  
+    <h:head>  
+        <title>Edit Your Record</title>  
+
+        <style>
+
+
+
+            .form{
+                background-color: #EEEEEE;
+                padding-left: 10px;
+                padding-right:20px;
+                font-family: Verdana, Arial, Helvetica, sans-serif;
+                font-size: 16px;
+                border: 1px;
+                border-style: solid;
+                border-color: gray;
+                h1:hover;
+            }
+
+            .column-one{
+                padding-right: 100px;
+            }
+            .btn{
+                width:200px; 
+                height: 50px; 
+                background-color: #007000;
+                color: white;
+                font-size: 18px;
+                font-weight: bold;
+                border: 1px;
+                border-style: solid;
+                border-color: gray;
+                border-radius: 10px;
+
+            }
+            input{
+                box-shadow: 10px grey;
+                border: 1px;
+                border-style: solid;
+                border-color: gray;
+                border-radius: 2px;
+                width: 300px;
+                height: 30px;
+            }
+            select{
+                border: 1px;
+                border-style: solid;
+                border-color: gray;
+                border-radius: 2px;
+                width: 300px;
+                height: 30px;
+            }
+            textArea{
+                border: 1px;
+                border-style: solid;
+                border-color: gray;
+                border-radius: 2px;
+                width: 300px;
+                height: 30px;
+            }
+        </style>
+    </h:head>  
+    <h:body>  
+        <h:form id="form" >  
+
+            <h2 style="text-align: center" >Edit Leads Information</h2>  
+                    <p:tabMenu activeIndex="#{param.i}">
+    <p:menuitem value="Leads" outcome="index" icon="pi pi-star">
+        <f:param name="i" value="0" />
+    </p:menuitem>
+           <p:menuitem value="Create Lead" outcome="create" icon="pi pi-star">
+        <f:param name="i" value="0" />
+    </p:menuitem>
+                                      </p:tabMenu>
+            <center>
+         
+                <h:panelGrid>
+                    <h:panelGrid columns="2">
+                        <h:panelGrid columns="2" style="float: left ;">
+                            <h:outputLabel for="clientname" >Client Name</h:outputLabel>  
+
+                            <h:inputText id="name-id" value="#{editUser.name}" />  
+
+                            <h:outputLabel for="email" >Client Email</h:outputLabel>  
+
+                            <h:inputText id="email-id" value="#{editUser.email}" />  
+
+                            <h:outputLabel for="status" >Client Status</h:outputLabel> 
+                            <h:selectOneMenu value="#{editUser.status}">
+                                <f:selectItem itemValue="" itemLabel=""/>
+                                <f:selectItem itemValue="Complete" itemLabel="Complete"/>
+                                <f:selectItem itemValue="Pending" itemLabel="Pending"/>
+                                <f:selectItem itemValue="Scheduled" itemLabel="Scheduled"/>
+                                <f:selectItem itemValue="In Progress" itemLabel="In Progress"/>
+                                <f:selectItem itemValue="Other" itemLabel="Other"/>
+                            </h:selectOneMenu>
+
+
+                            <h:outputLabel for="date" >Start Date</h:outputLabel>  
+
+                            <p:calendar id="date-id" value="#{editUser.date}" showOn="button" />
+
+
+
+
+                            <h:outputLabel for="manager" >Client Manager</h:outputLabel>  
+
+                            <h:inputText id="manager-id" value="#{editUser.manager}"/> 
+
+
+                            <h:outputLabel for="narration">Narration</h:outputLabel>  
+
+                            <h:inputText id="narration-id" value="#{editUser.narration}" />  
+
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2" style="float: right;" >
+
+                            <h:outputLabel for="businessname" >Business Name</h:outputLabel>  
+
+                            <h:inputText id="businessname-id" value="#{editUser.businessname}" />  
+
+                            <h:outputLabel for="clientaddress" >Client Address</h:outputLabel>  
+
+                            <h:inputText id="clientaddress-id" value="#{editUser.clientaddress}"/>  
+
+
+
+
+                            <h:outputLabel for="category" >Business Category</h:outputLabel>  
+
+                            <h:selectOneMenu value="#{editUser.category}">
+                                <f:selectItem itemValue="" itemLabel=""/>
+                                <f:selectItem itemValue="Supermarket" itemLabel="Supermarket"/>
+                                <f:selectItem itemValue="Pharmacy" itemLabel="Pharmacy"/>
+                                <f:selectItem itemValue="Boutique" itemLabel="Boutique"/>
+                                <f:selectItem itemValue="Hardware" itemLabel="Hardware"/>
+                                <f:selectItem itemValue="Restuarant" itemLabel="Restuarant"/>
+                                <f:selectItem itemValue="Bar" itemLabel="Bar"/>
+                                <f:selectItem itemValue="Manufacturing Company" itemLabel="Manufacturing Company"/>
+                                <f:selectItem itemValue="Other" itemLabel="Other"/>
+                            </h:selectOneMenu> 
+
+                            <h:outputLabel for="referrer" >Referrer</h:outputLabel>  
+
+                            <h:inputText id="referrer-id" value="#{editUser.referrer}" />  
+
+
+
+                            <h:outputLabel for="appointmentdate" >Appointment Date</h:outputLabel>  
+
+                           <p:calendar id="appointmentdate-id" value="#{editUser.date}" showOn="button" /> 
+
+
+                            <h:outputLabel for="lead">Lead</h:outputLabel>  
+
+                            <h:inputText id="lead-id" value="#{editUser.lead}" />  
+
+
+                        </h:panelGrid>
+                    </h:panelGrid>
+                    <h:panelGrid  columns="2" style="display:inline; width:1200px; width: 100px;">
+
+
+
+
+
+                        <center><h:commandButton value="Update" action="#{user.update(editUser)}" style="width: 80px;"></h:commandButton></center>  
+                    </h:panelGrid>
+                </h:panelGrid>
+            </center>
+        </h:form>  
+    </h:body>  
+</html>  
+
